@@ -11,37 +11,35 @@
 
 
 body {
-    background-color: black;
+    background-color: #e6f4ff;
     font-family: 'Franklin Gothic Medium';
     overflow-x: hidden;
   }
 
 header {
-    background-color: black;
+    background-color: whitesmoke;
 }
 
-
+img.headimg {
+  border: 0.25vmin solid black;
+  max-width: 7vmin;
+}
 
 a#titletext {
-  text-decoration: none;
-  color: white;
-  width: fit-content;
-  font-weight: bolder;
-  font-family: Arial, Helvetica, sans-serif, sans-serif;
   position: absolute;
   left: 1%;
-  font-size: 20px;
+  top: 1%;
 }
 
 div.navbar {
   width: 100%;
   position: relative;
-  background-color: black;
+  background-color: rgb(3, 3, 101);
   height: 40px;
   position: fixed;
   padding-right: 100%;
   padding-top: 1.25%;
-  z-index: 1;
+  z-index: 999;
 }
 
 div.navtext {
@@ -49,11 +47,11 @@ div.navtext {
   display: flex;
   justify-content: right;
   padding-right: 1%;
-  margin-top: -12px;
+  margin-top: -2.1vmin;
 }
 
 div.nav {
-  font-size: 22px;
+  font-size: 2.5vmin;
   padding: 20px 15px;
   /*transition: border-top 0.25s ease-out 50ms;*/
   /*transition: margin-top 0.25s ease-out 50ms;*/
@@ -69,13 +67,13 @@ a.navobj {
 
 
 div.nav:hover {
-  border-top: 3px solid white;
+  border-top: 3px solid whitesmoke;
   margin-top: -2.5px;
 
 }
 
 div.nav#active {
-  border-top: 3px solid white;
+  border-top: 3px solid whitesmoke;
   margin-top: -2.5px;
 }
 
@@ -89,7 +87,7 @@ section#cards {
 
 h1#Header {
   font-family: Intro;
-  color: white;
+  color: #030363;
   font-size: 20vmin;
   /*border: 2px solid white;*/
   padding: 0vmin 100vmin 0vmin 0vmin;
@@ -97,7 +95,11 @@ h1#Header {
   margin-top: 10%;
   text-wrap: nowrap;
   text-align: center;
-  background-color: black;
+  background-color: rgb(230, 244, 255);
+}
+
+p.smolp {
+  font-size: 5vmin;
 }
 
 .card-group,
@@ -126,7 +128,7 @@ h1#Header {
 .smol-card {
   width: 12vmin;
   border-radius: 2vmin;
-  left: 50%;
+  left: 45%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -159,34 +161,34 @@ h1#Header {
 }
 
 .card-group:hover > .big-card:nth-child(2) {
-  transform: translate(-40%, 5%) rotate(-5.5deg);
+  transform: translate(-40%, 5%);
 }
 
 .card-group:hover > .big-card:nth-child(3) {
-  transform: translate(15%, 2%) rotate(3deg);
+  transform: translate(15%, 2%);
 }
 
 .card-group:hover > .big-card:nth-child(4) {
-  transform: translate(80%, 0%) rotate(13deg);
+  transform: translate(80%, 0%);
 }
 
 /*little card hover effects*/
 
 .card-group:hover > .smol-card:nth-child(5) {
-  transform: translate(300%, -190%) rotate(-15deg);
+  transform: translate(300%, -200%);
   opacity: 100%;
 }
 
 .card-group:hover > .smol-card:nth-child(6) {
-  transform: translate(310%, 220%) rotate(10deg);
+  transform: translate(300%, 200%);
 }
 
 .card-group:hover > .smol-card:nth-child(7) {
-  transform: translate(-330%, 240%) rotate(-15deg);
+  transform: translate(-300%, 200%);
 }
 
 .card-group:hover > .smol-card:nth-child(8) {
-  transform: translate(-250%, -200%) rotate(10deg);
+  transform: translate(-300%, -200%);
 }
 
 img.imgcard {
@@ -199,58 +201,78 @@ img.imgcards {
   height: 7vmin;
 }
 
-/* parallax effect */
+/* About me */
 
-.parallax {
-  /* The image used */
-  background-image: url("roboparallax.png");
-
-  /* Full height */
-  height: 100%;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 30%;
-  padding-bottom: 30%;
+section#aboutme {
+  border-top: 0.25vmin solid rgb(3, 3, 101);
+  padding: 20vmin 0;
+  margin: 0 20%;
 }
 
-div.caption {
-  margin: auto;
-  width: 50%;
-  color:#ddd;
-  background-color: rgba(46, 46, 46, 0.801);
-  padding: 5% 25.1%;
-  position: relative;
+
+
+div.aboutme {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vmin; /* space between img + text */
+  color: #ddd;
+  width: 100%;
+  padding: 0 0;
+
+}
+
+div.border {
+  border-radius: 2%;
+  border: 0.25vmin solid black;
+  background: #C7D3E0;
+  display: flex;
+  align-items: center;
+  gap: 1vmin;
+
+  /* Your padding here — THIS is the only place it works correctly */
+  padding: 10vmin 10vmin;
+
+  /* Optional: keep it from growing too wide */
+  max-width: 70vmin;
+  margin: 0 auto;
 }
 
 div.floatright, div.floatleft {
   justify-content: space-between;
+
 }
 
 div.floatright {
   padding-left: 10%;
+  
 }
 
 div.floatleft {
   padding-right: 3%;
   margin-left: -10%;
+
 }
 
 .spielimg {
   width: 40vmin;
   border-radius: 10px;
+  border: 0.25vmin solid rgb(3, 3, 101);
+}
+
+h2#aboutme {
+  font-size: 5vmin;
+  color: rgb(3, 3, 101);
 }
 
 p.caption {
+  color: rgb(0, 30, 40);
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+
 }
 
 /* intro portion */
@@ -262,10 +284,16 @@ p.caption {
 section#slideshow {
   height: 100vh;
   width: 100vw;
-  background-color: black;
+  background-color: rgb(230, 244, 255);
   margin: 0rem;
   overflow: hidden;
+}
 
+div#borderslide {
+
+  margin: 0 20%;
+  display: flex;
+  border-top: 0.25vmin solid rgb(3, 3, 101);
 }
 
 #image-track {
@@ -293,9 +321,9 @@ section#slideshow {
 */
 /*footer*/
 footer {
-  border-top: 1px solid #e8e8e8;
+  border-top: 0.25vmin solid rgb(3, 3, 101);
   padding: 5vmin 0;
-  margin: 0 10%;
+  margin: 0 20%;
   display: flex;
 }
 
@@ -320,14 +348,14 @@ ul#contactlist {
 }
 
 a#contact {
-  color: white;
+  color: rgb(3, 3, 101);
   opacity: 0.9;
   text-wrap: nowrap;
   font-size: 6vmin;
 }
 
 a#email {
-  color: white;
+  color: rgb(3, 3, 101);
   text-wrap: nowrap;
   font-size: 4vmin;
   margin-top: 10%;
@@ -341,7 +369,7 @@ img.footimg {
 }
 
 span.username {
-  color: white;
+  color: rgb(3, 3, 101);
   vertical-align: middle;
   text-decoration: none;
 }
