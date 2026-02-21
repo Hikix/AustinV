@@ -276,6 +276,7 @@ footer {
 
 
 @media (max-width: 768px) {
+<<<<<<< HEAD
     .footer-content {
         flex-direction: column;
         align-items: flex-start;
@@ -362,3 +363,7 @@ footer {
     .project-grid { grid-template-columns: 1fr; }
     .grid-item.full-width { grid-column: span 1; }
 }
+=======
+    .about-grid { grid-template-columns: 1fr; }
+}
+>>>>>>> 7d8969e23d592dff16ce9cf65f04c029f2c81105
