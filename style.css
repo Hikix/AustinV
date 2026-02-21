@@ -3,9 +3,14 @@
   src: url(fragile-bombers/Fragile\ Bombers.otf);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
-    --primary: #030363;
-    --light-blue: #e6f4ff;
+    --primary-bold: #001a4d; /* Deep Navy for maximum contrast */
+    --accent-blue: #0055ff;  /* Vibrant Blue for the typed words */
+    --light-blue-bg: #e6f4ff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,56 +21,344 @@ body {
     overflow-x: hidden;
 }
 
+/* Updated Navbar for visibility */
 .navbar {
-    background: var(--primary);
+    background: var(--primary-bold); /* Use the deep navy */
     padding: 15px 0;
     position: fixed;
     width: 100%;
+    top: 0;
+    left: 0;
     z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Adds depth so it sits above the hero */
 }
+
 .nav-container {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.headimg { height: 40px; border: 1px solid white; }
-.navobj { color: white; text-decoration: none; font-weight: bold; margin-left: 20px; }
 
+.headimg { 
+    height: 45px; 
+    border: 1.5px solid var(--white); 
+    border-radius: 4px;
+}
+
+.navtext {
+    display: flex;
+    gap: 30px;
+    color: white;
+}
+
+.navobj { 
+    color: var(--white); 
+    text-decoration: none; 
+    font-weight: 700; 
+    font-size: 1rem;
+    position: relative; /* Anchor for the line */
+    padding-bottom: 5px; /* Space between text and line */
+    transition: color 0.3s ease;
+}
+
+/* The Line - Hidden state */
+.navobj::after {
+    content: '';
+    position: absolute;
+    bottom: 0;          /* Move to the bottom */
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #ffcc33;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* The Line - Hover state */
+.navobj:hover::after {
+    width: 100%;        /* Grow from center */
+}
+
+.navobj:hover {
+    color: #ffcc33;
+}
 .hero-section {
-    height: 100vh;
+    padding-top: 80px; /* Pushes content down so the navbar doesn't cover it */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    /* ... existing background styles ... */
 }
+/* Your custom font name header */
 .custom-header { 
     font-family: 'Intro', sans-serif;
     font-size: clamp(4rem, 12vw, 10rem); 
-    color: var(--primary); 
+    color: var(--primary-bold); 
+    margin-bottom: 20px;
+    /* Subtle depth to help it pop */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05); 
+}
+
+.typing-sentence {
+    font-size: 2.2rem;
+    color: var(--primary-bold);
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+#typed {
+    font-weight: 700;
+    color: var(--accent-blue);
+    /* Underline removed as requested */
+    border-bottom: none; 
+}
+
+/* Styling the blinking cursor to match the accent */
+.typed-cursor {
+    font-size: 2.2rem;
+    color: var(--accent-blue);
+}
+
+#aboutme-refined {
+    padding: 100px 10%;
+    background-color: var(--light-blue-bg);
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 2px solid var(--primary-bold);
+    box-shadow: 0 20px 40px rgba(0, 26, 77, 0.1);
+}
+
+.about-grid {
+    display: grid;
+    /* This creates two equal columns */
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+}
+
+.about-image-box {
+    width: 100%;
+    height: 100%;
+}
+
+.spielimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the photo fills the space without stretching */
+    display: block;
+}
+
+.about-copy {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-copy h2 {
+    color: var(--primary-bold);
+    font-family: 'Intro', sans-serif;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
-.tag-cloud { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-.tag-cloud span { background: white; padding: 8px 18px; border-radius: 20px; color: var(--primary); font-weight: bold; border: 1px solid var(--primary); }
 
-#aboutme-refined { padding: 100px 10%; }
-.about-container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 20px; overflow: hidden; }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; }
-.spielimg { width: 100%; height: 100%; object-fit: cover; }
-.about-copy { padding: 40px; }
+.about-copy p {
+    color: var(--primary-bold);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Mobile Fix: Stack them vertically when the screen is small */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-copy {
+        padding: 40px 30px;
+    }
+}
 
 #slideshow { height: 100vh; width: 100vw; position: relative; overflow: hidden; }
 #image-track { display: flex; gap: 4vmin; position: absolute; left: 20%; top: 50%; transform: translate(0%, -50%); }
 .image { width: 40vmin; height: 56vmin; object-fit: cover; -webkit-user-drag: none; }
 
-footer { background: var(--primary); color: white; padding: 60px 10%; }
-.footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
-.email-link { color: #8cb6ff; text-decoration: none; font-size: 1.2rem; }
-.social-item { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-.social-item img { height: 25px; filter: invert(1); }
-.social-item a { color: white; text-decoration: none; }
+/* Integrated Footer Style */
+footer {
+    background: transparent;
+    padding: 80px 10% 40px 10%;
+    color: var(--primary);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Footer Line Fix */
+.footer-line {
+    height: 2px; /* Made slightly thicker */
+    background: var(--primary-bold); /* Match your standout navy */
+    width: 100%;
+    opacity: 1; /* Full visibility */
+    margin-bottom: 40px;
+}
+
+/* Ensure the label also stands out */
+.foot-label {
+    color: var(--primary-bold);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.email-link {
+    font-family: 'Intro', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--primary);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.foot-right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.foot-icon {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    /* Removed the filter so icons stay stock */
+}
+
+.social-link:hover {
+    opacity: 0.6;
+}
+
+.copyright {
+    margin-top: 60px;
+    font-size: 0.8rem;
+    opacity: 0.4;
+    text-align: center;
+}
+
+
 
 @media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; }
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/*Design Pages*/ 
+.project-page {
+    padding-top: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.project-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 5%;
+}
+
+.project-title {
+    font-family: 'Intro', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--primary-bold);
+}
+
+.project-tags {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.project-tags span {
+    background: var(--light-blue-bg);
+    color: var(--accent-blue);
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid var(--accent-blue);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 0 5%;
+}
+
+.grid-item.full-width {
+    grid-column: span 2;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 26, 77, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+}
+
+.project-img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+}
+
+.spec-list {
+    list-style: none;
+}
+
+.spec-list li {
+    margin-bottom: 10px;
+    color: var(--primary-bold);
+}
+
+@media (max-width: 768px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .grid-item.full-width { grid-column: span 1; }
 }
